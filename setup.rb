@@ -20,4 +20,6 @@ configure do
 
   # Don't want secret key changing with every reset
   set :session_secret, ENV['SESSION_KEY']
+
+  Slim::Engine.set_default_options pretty: true, sort_attrs: false
 end
