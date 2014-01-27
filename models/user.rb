@@ -15,6 +15,14 @@ class User < ActiveRecord::Base
     login(attrs) || register(attrs)
   end
 
+  def self.with_site(name)
+    User.where(username: name.downcase).first
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   protected
 
   def downcase_creds

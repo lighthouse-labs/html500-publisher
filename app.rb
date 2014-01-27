@@ -22,6 +22,16 @@ get '/upload' do
   'Upload page here'
 end
 
+# display site for provided username
+get '/s/:site' do 
+  @user = User.with_site(params[:site])
+  if @user
+    slim :site
+  else
+    'Site Not Found'
+  end
+end
+
 get '/test_upload' do 
   connection = Fog::Storage.new({
     :provider                 => 'AWS',
