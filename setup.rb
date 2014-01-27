@@ -16,4 +16,7 @@ configure do
   set :server, :puma 
   set :database, ENV['DATABASE_URL'] || "sqlite3:///db/dev.db"
   enable :sessions
+
+  # Don't want secret key changing with every reset
+  set :session_secret, ENV['SESSION_KEY']
 end
