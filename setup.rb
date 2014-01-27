@@ -17,7 +17,7 @@ require_relative 'models/user'
 configure do 
   # "Me like Puma" - KV 2014
   set :server, :puma 
-  
+
   set :database, ENV['DATABASE_URL'] || "sqlite3:///db/dev.db"
   enable :sessions
 
