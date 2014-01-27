@@ -6,10 +6,11 @@ gem 'sinatra-activerecord'
 
 gem 'puma'
 
-group :development do 
+group :development, :test do 
   gem 'shotgun'
   gem 'tux'
   gem 'sqlite3'
+  gem 'dotenv' # heroku has config vars so doesnt use this
 end
 
 group :production do 

@@ -1,7 +1,4 @@
-require 'sinatra'
-require 'sinatra/activerecord'
-
-require_relative 'models/user'
+require_relative 'setup'
 
 configure do 
   set :server, :puma 
