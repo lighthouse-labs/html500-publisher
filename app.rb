@@ -1,5 +1,7 @@
 require_relative 'setup'
 
+# Homepage - Where users will login
+# Note: redirect to upload page if already logged in
 get '/' do
   # if session[:user_id].present?
   #   redirect '/upload'
@@ -8,6 +10,8 @@ get '/' do
   # end
 end
 
+# Login page - Passwordless login
+# Note: redirect to upload page if already logged in
 post '/login' do
   @user = User.authenticate(params[:user])
   if @user.valid?
@@ -18,6 +22,7 @@ post '/login' do
   end
 end
 
+# Drag&Drop AJAX based mult-file uploader on this page
 get '/upload' do
   'Upload page here'
 end
