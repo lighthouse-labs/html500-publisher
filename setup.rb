@@ -18,7 +18,7 @@ configure do
   # "Me like Puma" - KV 2014
   set :server, :puma 
 
-  set :database, ENV['DATABASE_URL'] || "sqlite3:///db/dev.db"
+  set :database, ENV['DATABASE_URL']
   enable :sessions
 
   # Don't want secret key changing with every app restart
