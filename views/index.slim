@@ -1,9 +1,13 @@
-doctype html
-html
-  head
-    title Slim Examples
-    meta name="keywords" content="TheHTML500 html500 lighthouse labs"
-    meta name="author" content="Lighthouse Labs"
+h1 Slim example
 
-  body
-    h1 Slim example
+form action="/login" method="post"
+  p
+    input type="text" name="user[email]" id="user_email"
+  p
+    input type="text" name="user[username]" id="user_username"
+  p
+    input type="text" name="user[first_name]" id="user_first_name"
+  p
+    input type="text" name="user[last_name]" id="user_last_name"
+  p
+    input type="submit"
