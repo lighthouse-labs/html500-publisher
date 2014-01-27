@@ -18,7 +18,7 @@ configure do
   # "Me like Puma" - KV 2014
   set :server, :puma 
 
-  set :database, ENV['DATABASE_URL']
+  set(:database, ENV['DATABASE_URL']) if ENV['DATABASE_URL'].present?
   enable :sessions
 
   # Don't want secret key changing with every app restart
