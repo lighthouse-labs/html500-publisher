@@ -7,6 +7,7 @@ gem 'sinatra-contrib'
 gem 'sinatra-activerecord'
 
 gem 'puma'
+gem 'slim'
 
 group :development, :test do 
   gem 'shotgun'

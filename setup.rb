@@ -7,6 +7,7 @@ end
 
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'slim'
 
 require_relative 'models/user'
 
