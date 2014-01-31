@@ -25,8 +25,11 @@ end
 
 # Drag&Drop AJAX based mult-file uploader on this page
 get '/upload' do
-  current_user
-  slim :upload
+  if current_user.blank?
+    redirect_to '/'
+  else
+    slim :upload  
+  end
 end
 
 post '/upload' do 
