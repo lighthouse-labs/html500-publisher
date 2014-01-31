@@ -4,6 +4,11 @@ html
     title Sites - The HTML500
     meta name="keywords" content="TheHTML500 html500 lighthouse labs"
     meta name="author" content="Lighthouse Labs"
-
+    == yield_content :css
+    
   body
     == yield
+
+    script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
+
+    == yield_content :js

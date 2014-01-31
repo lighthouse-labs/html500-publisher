@@ -1,0 +1,22 @@
+form class="file-upload"
+  input id="fileupload" type="file" name="files[]" data-url="/upload" multiple="true"
+  p Drag your index.html and other files here
+
+ul class="loader"
+  li
+  li
+  li
+
+a class="button" href="#" data-root-url="http://#{request.host_with_port}/site/"
+  span Preview
+
+- content_for :js do
+  script src="/js/vendor/jquery.ui.widget.js"
+  script src="/js/vendor/jquery.iframe-transport.js"
+  script src="/js/vendor/jquery.fileupload.js"
+  script src="/js/upload.js"
+
+- content_for :css do 
+  link rel="stylesheet" type="text/css" href="/css/spinner.css"
+  link rel="stylesheet" type="text/css" href="/css/upload.css"
+  link rel="stylesheet" type="text/css" href="/css/preview-button.css"

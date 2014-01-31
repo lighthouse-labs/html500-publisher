@@ -1,13 +1,51 @@
-h1 Slim example
 
-form action="/login" method="post"
-  p
-    input type="text" name="user[email]" id="user_email"
-  p
-    input type="text" name="user[username]" id="user_username"
-  p
-    input type="text" name="user[first_name]" id="user_first_name"
-  p
-    input type="text" name="user[last_name]" id="user_last_name"
-  p
-    input type="submit"
+
+section
+  header
+    img id="logo" src="/images/html500.png" alt="The #HTML500" title="The #HTML500" width="300px" style="margin: auto auto;"
+
+  h1 Site Publisher
+
+  ul.errors
+    - @user.errors.full_messages.each do |msg|
+      li = msg
+
+  form action="/login" method="post"
+    div class="field name-box"
+      input type="text" name="user[first_name]" id="name" placeholder="Who Are You?" value=@user.first_name
+      label for="name" First Name
+      span class="ss-icon" check
+
+    div class="field name-box"
+      input type="text" name="user[last_name]" id="name" placeholder="Who Are You?" value=@user.last_name
+      label for="name" Last Name
+      span class="ss-icon" check
+
+    div class="field name-box"
+      input type="text" name="user[email]" id="email" placeholder="We won't share this with anyone!" value=@user.email
+      label for="email" E-mail
+      span class="ss-icon" check
+
+    div class="field name-box"
+      input type="text" name="user[username]" id="username" placeholder="Only letters & numbers" value=@user.username
+      label for="username" Username
+      span class="ss-icon" check
+
+    div class="field msg-box"
+      textarea id="msg" name="user[message]" rows="4" placeholder="Your message goes here..." 
+        = @user.message
+      label for="msg" Message
+      span class="ss-icon" check
+
+    input class="button" type="submit" value="Send"
+
+  footer
+    h2 Powered By
+    img id="lighhouse-logo" src="/images/lighthouselabs.png" alt="Presented by Lighthouse Labs" title="Lighthouse Labs" width="300px"
+
+- content_for :css
+  link rel="stylesheet" type="text/css" href="/css/index.css"
+
+- content_for :js
+  script src="/js/index.js"
+

@@ -1,5 +1,6 @@
-## LOAD
+ENV['RACK_ENV'] ||= 'development' # default to development
 
+## LOAD
 if ENV['RACK_ENV'] == 'development'
   require 'dotenv'
   Dotenv.load
@@ -7,6 +8,8 @@ end
 
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'sinatra/content_for'
+require 'sinatra/json'
 require 'slim'
 require 'fog'
 

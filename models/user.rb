@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true
+  validates :message, length: { maximum: 255}, presence: true
 
   before_validation :downcase_creds
 
@@ -21,6 +22,10 @@ class User < ActiveRecord::Base
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def site_url
+    URI.join(ENV['SITE_HOST_URI'], "#{self.folder}/", 'index.html')
   end
 
   protected

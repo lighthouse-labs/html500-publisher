@@ -1,1 +1,46 @@
-h1 Site for user #{@user.full_name}
+doctype html
+html
+  head
+    meta charset="utf-8"
+  
+    meta http-equiv="X-UA-Compatible" content="chrome=1"
+
+    title 
+      = @user.full_name
+      | 's HTML500 Site
+
+    link href="/css/site.css" media="screen" rel="stylesheet" type="text/css"
+
+    script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+
+    javascript:
+      //function to fix height of iframe!
+      var calcHeight = function() {
+        var headerDimensions = $('#header-bar').height();
+        $('#preview-frame').height($(window).height() - headerDimensions);
+      }
+
+      $(document).ready(function() {
+        calcHeight();
+        $('#header-bar a.close').mouseover(function() {
+          $('#header-bar a.close').addClass('activated');
+        }).mouseout(function() {
+          $('#header-bar a.close').removeClass('activated');
+        });
+      });
+
+      $(window).resize(function() {
+        calcHeight();
+      }).load(function() {
+        calcHeight();
+      });
+
+  body
+    div id="header-bar"
+      a class="html500-logo" href="http://thehtml500.com/" The #HTML500
+  
+      a class="lighthouse-logo site-loopback" href="http://thehtml500.com/" Lighthouse Labs
+        
+
+    iframe id="preview-frame" src=@user.site_url name="preview-frame" frameborder="0" noresize="noresize"
+
