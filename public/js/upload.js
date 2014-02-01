@@ -10,7 +10,7 @@ $(document).ready(function() {
     done: function (e, data, y) {
       $('.loader').removeClass('active');
       $('a.button').addClass('active');
-      $('a.button').attr('href', $('a.button').data('root-url') + data.result.site);
+      $('a.button').attr('href', $('a.button').data('root-url') + data.result.path);
     }
   });
 });

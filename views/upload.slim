@@ -1,6 +1,11 @@
 form class="file-upload"
   input id="fileupload" type="file" name="files[]" data-url="/upload" multiple="true"
-  p Drag your index.html and other files here
+  p 
+    | Hello 
+    = current_user.full_name
+    | ,
+    br
+    | Drag your index.html, css and image files here.
 
 ul class="loader"
   li

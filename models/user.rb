@@ -24,8 +24,8 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def site_url
-    URI.join(ENV['SITE_HOST_URI'], "#{self.folder}/", 'index.html')
+  def site_url(file)
+    URI.join(ENV['SITE_HOST_URI'], "#{self.folder}/", file || 'index.html')
   end
 
   protected

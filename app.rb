@@ -3,12 +3,12 @@ require_relative 'setup'
 # Homepage - Where users will login
 # Note: redirect to upload page if already logged in
 get '/' do
-  if current_user.present?
-    redirect '/upload'
-  else
-    @user = User.new
-    slim :index
-  end
+  # if current_user.present?
+  #   redirect '/upload'
+  # else
+  @user = User.new
+  slim :index
+  # end
 end
 
 # Login page - Passwordless login
@@ -21,6 +21,10 @@ post '/login' do
   else
     slim :index
   end
+end
+
+delete '/logout' do 
+  session[:user_id] = nil
 end
 
 # Drag&Drop AJAX based mult-file uploader on this page
@@ -36,17 +40,15 @@ post '/upload' do
   timestamp = Time.now.utc.to_i
   folder = "#{current_user.username}/#{timestamp}"
   upload_files(folder, params[:files])
+  file_name = get_html_filename(params[:files])
   current_user.update_attributes folder: folder
-  json site: current_user.username
-end
-
-get '/sites' do 
-  # list all the sites
+  json path: "#{current_user.username}/#{file_name}"
 end
 
 # display site for provided username
-get '/site/:site' do 
+get '/site/:site/:file' do 
   @user = User.with_site(params[:site])
+  @file = params[:file]
   if @user
     slim :site, layout: false
   else
@@ -58,6 +60,11 @@ private
 
 def current_user
   @current_user ||= User.find(session[:user_id]) if session[:user_id]
+end
+
+def get_html_filename(files)
+  file = files.detect {|f| f[:filename].ends_with?('.html') }
+  file[:filename] if file
 end
 
 def upload_files(folder, files)
