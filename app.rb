@@ -25,6 +25,7 @@ end
 
 delete '/logout' do 
   session[:user_id] = nil
+  redirect_to '/'
 end
 
 # Drag&Drop AJAX based mult-file uploader on this page
@@ -41,7 +42,7 @@ post '/upload' do
   folder = "#{current_user.username}/#{timestamp}"
   upload_files(folder, params[:files])
   file_name = get_html_filename(params[:files])
-  current_user.update_attributes folder: folder
+  current_user.update_attributes folder: folder, page: file_name
   json path: "#{current_user.username}/#{file_name}"
 end
 
