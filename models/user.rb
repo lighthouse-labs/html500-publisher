@@ -2,9 +2,12 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :username, presence: true, uniqueness: true
   validates :email, presence: true
-  validates :message, length: { maximum: 255}, presence: true
+  validates :message, length: { maximum: 255}
+  validates :username, 
+            presence: true, 
+            uniqueness: true, 
+            format: { with: /\A[a-zA-Z0-9]+\z/i, message: "should contain only numbers and letters" }
 
   before_validation :downcase_creds
 
