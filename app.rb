@@ -3,12 +3,12 @@ require_relative 'setup'
 # Homepage - Where users will login
 # Note: redirect to upload page if already logged in
 get '/' do
-  # if current_user.present?
-  #   redirect '/upload'
-  # else
-  @user = User.new
-  slim :index
-  # end
+  if current_user.present?
+    redirect '/upload'
+  else
+    @user = User.new
+    slim :index
+  end
 end
 
 # Login page - Passwordless login
