@@ -5,7 +5,14 @@ form class="file-upload"
     = current_user.full_name
     | ,
     br
+    br
     | Drag your index.html, css and image files here.
+    br
+    br
+    em OR
+    br
+    br
+    a href="/logout" title="Logout" data-method="delete" rel="nofollow" Logout
 
 ul class="loader"
   li
@@ -19,6 +26,7 @@ a class="button" href="#" data-root-url="http://#{request.host_with_port}/site/"
   script src="/js/vendor/jquery.ui.widget.js"
   script src="/js/vendor/jquery.iframe-transport.js"
   script src="/js/vendor/jquery.fileupload.js"
+  script src="/js/vendor/jquery_ujs.js"
   script src="/js/upload.js"
 
 - content_for :css do 

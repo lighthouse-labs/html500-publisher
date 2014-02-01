@@ -25,13 +25,13 @@ end
 
 delete '/logout' do 
   session[:user_id] = nil
-  redirect_to '/'
+  redirect '/'
 end
 
 # Drag&Drop AJAX based mult-file uploader on this page
 get '/upload' do
   if current_user.blank?
-    redirect_to '/'
+    redirect '/'
   else
     slim :upload  
   end

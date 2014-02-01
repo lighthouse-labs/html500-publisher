@@ -10,16 +10,17 @@ form.file-upload {
   transition: all 1s;
 }
 
-form.file-upload p{
+form.file-upload p {
   width: 100%;
   height: 100%;
   text-align: center;
   height: 170px;
   position: relative;
-  top: 40px;
+  top: -10px;
   vertical-align: middle;
   color: #ffffff;
   font-family: Arial;
+  font-size: 0.9em;
 }
 form.file-upload input{
   position: absolute;
@@ -29,6 +30,14 @@ form.file-upload input{
   height: 100%;
   outline: none;
   opacity: 0;
+}
+
+form.file-upload p a, form.file-upload p a:visited {
+  color: #313a3d;
+}
+
+form.file-upload p em {
+  font-size: 0.7em;
 }
 
 form.file-upload.off {
