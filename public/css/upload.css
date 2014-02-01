@@ -2,10 +2,10 @@ form.file-upload {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -100px;
+  margin-top: -180px;
   margin-left: -250px;
   width: 500px;
-  height: 200px;
+  height: 230px;
   border: 4px dashed #fff;
   transition: all 1s;
 }
