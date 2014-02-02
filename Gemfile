@@ -9,10 +9,10 @@ gem 'sinatra-activerecord'
 gem 'puma'
 gem 'slim'
 gem 'fog'
+gem 'tux'
 
 group :development, :test do 
   gem 'shotgun'
-  gem 'tux'
   gem 'sqlite3'
   gem 'dotenv' # heroku has config vars so doesnt use this
 end
