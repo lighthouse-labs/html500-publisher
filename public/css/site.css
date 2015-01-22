@@ -56,7 +56,6 @@ html body{
 }
 
 #header-bar a.html500-logo {
-  background-image: url(/images/html500.png);
   background-size: contain;
   background-repeat:no-repeat;
   margin-left: 5px;  
@@ -65,6 +64,9 @@ html body{
   height: 45px;
   float:left;
   text-indent:-9999px;
+}
+#header-bar a.html500-logo.vancouver {
+  background-image: url(/images/logo_vancouver.png);
 }
 
 #preview-frame {
