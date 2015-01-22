@@ -1,1 +1,1 @@
-web: bundle exec puma -t 3:3 -w 1 -b unix:///var/run/thehtml500.sock
+web: bundle exec puma -t 3:3 -w 1 -b unix:///home/azureuser/thehtml500.sock
