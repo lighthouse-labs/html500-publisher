@@ -14,6 +14,7 @@ umask 002
 git submodule sync && git submodule update --init --recursive
 
 export PATH=/home/azureuser/.rvm/gems/ruby-2.2.0/bin:/home/azureuser/.rvm/gems/ruby-2.2.0@global/bin:/home/azureuser/.rvm/rubies/ruby-2.2.0/bin:/home/azureuser/.rvm/bin:"$PATH"
+export GEM_PATH=/home/azureuser/.rvm/gems/ruby-2.2.0:/home/azureuser/.rvm/gems/ruby-2.2.0@global
 
 run deploy/before_restart
 run deploy/restart && run deploy/after_restart
