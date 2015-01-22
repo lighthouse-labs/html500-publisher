@@ -1,10 +1,10 @@
 ENV['RACK_ENV'] ||= 'development' # default to development
 
 ## LOAD
-if ENV['RACK_ENV'] == 'development'
-  require 'dotenv'
-  Dotenv.load
-end
+# if ENV['RACK_ENV'] == 'development'
+require 'dotenv'
+Dotenv.load
+# end
 
 require 'sinatra'
 require 'sinatra/activerecord'
