@@ -1,1 +1,1 @@
-web: bundle exec puma -p $PORT -t 5:5 -w 2 
+web: bundle exec puma -p $PORT -t 3:3 -w 1 -b unix:///var/run/thehtml500.sock
