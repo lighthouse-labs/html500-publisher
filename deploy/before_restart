@@ -5,7 +5,7 @@ def run(cmd)
   exit($?.exitstatus) unless system "umask 002 && #{cmd}"
 end
 
-RAILS_ENV   = ENV['RAILS_ENV'] || 'production'
+RACK_ENV   = ENV['RACK_ENV'] || 'production'
 use_bundler = File.file? 'Gemfile'
 rake_cmd    = use_bundler ? 'bundle exec rake' : 'rake'
 
@@ -29,7 +29,7 @@ if File.file? 'Rakefile'
   changed_assets = `git diff #{oldrev} #{newrev} --name-only -z app/assets`.split("\0")
   tasks << "assets:precompile" if changed_assets.size > 0
 
-  run "#{rake_cmd} #{tasks.join(' ')} RAILS_ENV=#{RAILS_ENV}" if tasks.any?
+  run "#{rake_cmd} #{tasks.join(' ')} RACK_ENV=#{RACK_ENV}" if tasks.any?
 end
 
 # clear cached assets (unversioned/ignored files)
