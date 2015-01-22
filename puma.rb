@@ -2,7 +2,7 @@ threads 2,2
 workers 1
 preload_app!
 
-cwd = File.dirname(__FILE__) + "/.."
+cwd = File.expand_path(File.dirname(__FILE__)) + "/.."
 
 puts "Booting From Puma Config... with cwd = #{cwd}"
 
