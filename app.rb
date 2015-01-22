@@ -40,7 +40,7 @@ end
 post '/upload' do 
   timestamp = Time.now.utc.to_i
   folder = "#{current_user.username}/#{timestamp}"
-  upload_files(folder, params[:files])
+  upload_files(folder, params[:files], params[:relative_paths])
   file_name = get_html_filename(params[:files])
   current_user.update_attributes folder: folder, page: file_name
   json path: "#{current_user.username}/#{file_name}"
@@ -64,11 +64,12 @@ def current_user
 end
 
 def get_html_filename(files)
-  file = files.detect {|f| f[:filename].ends_with?('.html') }
+  file = files.detect {|f| f[:filename] == 'index.html' } || 
+    files.detect {|f| f[:filename].ends_with?('.html') }
   file[:filename] if file
 end
 
-def upload_files(folder, files)
+def upload_files(folder, files, relative_paths)
   connection = Fog::Storage.new({
     :provider                 => 'AWS',
     :aws_access_key_id        => ENV['AWS_ACCESS_KEY_ID'],
@@ -78,13 +79,18 @@ def upload_files(folder, files)
   bucket = connection.directories.get(ENV['S3_BUCKET'])
   # directory = bucket.directories.create()
 
+
    # Upload to S3
-  files.each do |file|
-    bucket.files.create(
-      key:    "#{folder}/#{file[:filename]}",
+  files.each_with_index do |file, i|
+    relative_path = relative_paths[i]
+    key = "#{folder}/#{relative_path}#{file[:filename]}"
+    options = {
+      key:    key,
       body:   file[:tempfile].read,
       public: true
-    )
+    }
+    options[:content_type] = 'image/svg+xml' if file[:filename].ends_with?('svg')
+    bucket.files.create(options)
   end
 end
 
