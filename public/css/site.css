@@ -16,6 +16,7 @@ html body{
   z-index:100;
   line-height:53px;
   margin-bottom:1px;
+  min-width: 500px;
 }
 
 #header-bar a.site-loopback{
@@ -28,7 +29,24 @@ html body{
   text-indent:-9999px;
 }
 
-#header-bar .lighthouse-logo{
+@media all and (max-width: 540px) {
+  #header-bar a.microsoft-logo {
+    display: none;
+  }
+}
+
+#header-bar a.microsoft-logo {
+  background-image:url(/images/microsoft.png);
+  background-size: contain;
+  width:164px;
+  height:52px;
+  position: relative;
+  left: -20px;
+  top: 6px;
+  
+}
+
+#header-bar a.lighthouse-logo {
   background-image:url(/images/lighthouselabs.png);
   background-size: contain;
   width:164px;
