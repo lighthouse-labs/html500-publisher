@@ -14,3 +14,4 @@ HTML500 Site Publisher & Presenter
 5. `rake db:migrate`
 6. `shotgun`
 
+- Created by Khurram Virani (in a jiffy!)
