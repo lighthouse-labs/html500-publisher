@@ -30,19 +30,19 @@ html body{
 }
 
 @media all and (max-width: 540px) {
-  #header-bar a.microsoft-logo {
+  #header-bar a.hosting-logo {
     display: none;
   }
 }
 
-#header-bar a.microsoft-logo {
-  background-image:url(/images/microsoft.png);
+#header-bar a.hosting-logo {
+  background-image:url(/images/canadian_web_hosting.png);
   background-size: contain;
   width:164px;
   height:52px;
   position: relative;
   left: -20px;
-  top: 6px;
+  top: 0px;
   
 }
 
@@ -84,7 +84,7 @@ html body{
   text-indent:-9999px;
 }
 #header-bar a.html500-logo.vancouver {
-  background-image: url(/images/logo_vancouver.png);
+  background-image: url(/images/html500_logo.png);
 }
 
 #preview-frame {
