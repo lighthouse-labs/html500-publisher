@@ -1,5 +1,5 @@
 #!/bin/sh
 echo "START restarting Foreman/Puma service..."
-rvmsudo foreman export upstart /etc/init -a thehtml500 -u azureuser -l /home/azureuser/thehtml500.log
+rvmsudo foreman export upstart /etc/init -a thehtml500 -u admina -l /home/admina/thehtml500.log
 rvmsudo service thehtml500 start || rvmsudo service thehtml500 restart
 echo "DONE restarting Foreman/Puma service..."
