@@ -40,10 +40,13 @@ end
 post '/upload' do 
   timestamp = Time.now.utc.to_i
   folder = "#{current_user.username}/#{timestamp}"
+  subfolders = get_subfolders(params[:files], params[:relative_paths])
   upload_files(folder, params[:files], params[:relative_paths])
-  file_name = get_html_filename(params[:files])
-  current_user.update_attributes folder: folder, page: file_name
-  json path: "#{current_user.username}/#{file_name}"
+  folder << ('/'+subfolders) if subfolders.present?
+  file = get_html_file(params[:files])
+  file = file[:filename]
+  current_user.update_attributes folder: folder, page: file
+  json path: "#{current_user.username}/#{file}"
 end
 
 # display site for provided username
@@ -63,10 +66,21 @@ def current_user
   @current_user ||= User.find(session[:user_id]) if session[:user_id]
 end
 
-def get_html_filename(files)
-  file = files.detect {|f| f[:filename] == 'index.html' } || 
+def get_html_file(files)
+  @html_file ||= files.detect {|f| f[:filename] == 'index.html' } || 
     files.detect {|f| f[:filename].ends_with?('.html') }
-  file[:filename] if file
+end
+
+def get_subfolders(files, relative_paths)
+  file = get_html_file(files)
+  if file
+    path = relative_paths[files.index(file)]
+    if path && path.length > 1
+      path
+    else
+      nil
+    end
+  end
 end
 
 def upload_files(folder, files, relative_paths)
