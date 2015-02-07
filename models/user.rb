@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :username, 
             presence: true, 
             uniqueness: true, 
-            format: { with: /\A[a-zA-Z0-9]+\z/i, message: "should contain only numbers and letters" }
+            format: { allow_blank: true, with: /\A[a-zA-Z0-9]+\z/i, message: "should contain only numbers and letters" }
 
   before_validation :downcase_creds
 
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def site_url(file)
-    URI.join(ENV['SITE_HOST_URI'], "#{self.folder}/", file || 'index.html')
+    URI.join(ENV['SITE_HOST_URI'], "#{URI.escape(self.folder)}/", file || URI.escape(self.page) || 'index.html')
   end
 
   protected

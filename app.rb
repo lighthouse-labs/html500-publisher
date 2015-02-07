@@ -46,13 +46,23 @@ post '/upload' do
   file = get_html_file(params[:files])
   file = file[:filename]
   current_user.update_attributes folder: folder, page: file
-  json path: "#{current_user.username}/#{file}"
+  json path: "#{current_user.username}"
 end
 
-# display site for provided username
+# OLD - Deprecated display site for provided username
 get '/site/:site/:file' do 
   @user = User.with_site(params[:site])
   @file = params[:file]
+  if @user
+    slim :site, layout: false
+  else
+    'Site Not Found'
+  end
+end
+
+get '/site/:site' do 
+  @user = User.with_site(params[:site])
+  # @file = params[:file]
   if @user
     slim :site, layout: false
   else
