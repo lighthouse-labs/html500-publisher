@@ -77,8 +77,8 @@ def current_user
 end
 
 def get_html_file(files)
-  @html_file ||= files.detect {|f| f[:filename] == 'index.html' } || 
-    files.detect {|f| f[:filename].ends_with?('.html') }
+  @html_file ||= files.detect {|f| f[:filename].to_s.downcase == 'index.html' } || 
+    files.detect {|f| f[:filename].to_s.downcase.ends_with?('.html') }
 end
 
 def get_subfolders(files, relative_paths)
